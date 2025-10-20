@@ -7,7 +7,11 @@ public class Reservation {
     private boolean IsWeekend;
 
     // constructor
-
+    public Reservation(String roomType, int numberOfNights, boolean isWeekend) {
+        this.roomType = roomType;
+        this.numberOfNights = numberOfNights;
+        IsWeekend = isWeekend;
+    }
 
     //getters and setters
     public String getRoomType() {
@@ -53,6 +57,7 @@ public class Reservation {
     public double getReservationTotal() {
        double total = getPrice() * numberOfNights;
         if (isWeekend()) {
+            //if stay is over a weekend, the price per night is increased by 10%
         total = total * 1.10;
         }
         return total;
