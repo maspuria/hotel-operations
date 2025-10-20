@@ -30,6 +30,19 @@ public class Employee {
     public double getHoursWorked() {
         return hoursWorked;
     }
+    // Derived Getters
+//    public double getTotalPay() {
+//        double totalPay = hoursWorked * payRate;
+//        double totalPayWithOvertime =
+//    }
+
+    public double getRegularHours(){
+        if (hoursWorked <= 40) {
+            return hoursWorked;
+        } else {
+            return 40;
+        }
+    }
 
 
 }
