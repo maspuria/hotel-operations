@@ -31,10 +31,12 @@ public class Employee {
         return hoursWorked;
     }
     // Derived Getters
-//    public double getTotalPay() {
-//        double totalPay = hoursWorked * payRate;
-//        double totalPayWithOvertime =
-//    }
+    // derived getter to calculate the workers total pay
+    public double getTotalPay() {
+        double regularHoursPay = getRegularHours() * payRate;
+        double overtimeHoursPay = getOvertimeHours() * payRate * 1.5;
+        return regularHoursPay + overtimeHoursPay;
+    }
     // derived getter to calculate the workers regular hours
     public double getRegularHours(){
         if (hoursWorked <= 40) {
@@ -43,6 +45,7 @@ public class Employee {
             return 40;
         }
     }
+    // derived getter to calculate the workers overtime hours they have
     public double getOvertimeHours() {
         if (hoursWorked > 40) {
             return hoursWorked - 40;
@@ -50,6 +53,7 @@ public class Employee {
             return 0;
         }
     }
+
 
 
 }
