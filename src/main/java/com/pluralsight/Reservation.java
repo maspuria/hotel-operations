@@ -1,21 +1,13 @@
 package com.pluralsight;
 
 public class Reservation {
-    // field members or attributes
+    // field members (backing variables) or attributes
     private String roomType;
     private int numberOfNights;
     private boolean IsWeekend;
-    private int price;
 
     // constructor
 
-
-    public Reservation(String roomType, int numberOfNights, boolean isWeekend, int price) {
-        this.roomType = roomType;
-        this.numberOfNights = numberOfNights;
-        IsWeekend = isWeekend;
-        this.price = price;
-    }
 
     //getters and setters
     public String getRoomType() {
@@ -42,13 +34,29 @@ public class Reservation {
         IsWeekend = weekend;
     }
 
-    public int getPrice() {
-        return price;
+    //derived getter
+    private double getPrice() {
+//        if (this.roomType.equalsIgnoreCase("King")) {
+//            return 139.00;
+//        } else if (this.roomType.equalsIgnoreCase("Queen")) {
+//            return 124.00;
+//        } else {
+//            throw new IllegalArgumentException("Invalid room type" + this.roomType);
+//        }
+        return switch (roomType.toLowerCase()) {
+            case "king" -> 139;
+            case "double" -> 124;
+            default -> throw new IllegalArgumentException("Invalid room type: " + roomType);
+        };
     }
 
-    // derived getter
-    public double getReservationTotal(){
-      return
+    public double getReservationTotal() {
+       double total = getPrice() * numberOfNights;
+        if (isWeekend()) {
+        total = total * 1.10;
+        }
+        return total;
     }
 
 }
+
